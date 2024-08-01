@@ -4,111 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Dashboard</title>
+    <link rel="stylesheet" href="css/team.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: #f0f2f5;
-        }
-        .container {
-            display: flex;
-            height: 100vh;
-        }
-        .sidebar {
-            width: 250px;
-            background-color: #1e1e2d;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-        .sidebar img {
-            border-radius: 50%;
-            margin-bottom: 20px;
-        }
-        .sidebar .menu {
-            margin-top: 20px;
-            width: 100%;
-        }
-        .sidebar .menu a {
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            padding: 10px;
-            text-align: center;
-            margin: 5px 0;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        .sidebar .menu a:hover {
-            background-color: #333348;
-        }
-        .content {
-            flex: 1;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .card {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .header h1 {
-            margin: 0;
-        }
-        .player-info {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-        .player-info img {
-            border-radius: 50%;
-        }
-        .stats {
-            display: flex;
-            gap: 20px;
-        }
-        .stats div {
-            background-color: #f0f2f5;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        .chart {
-            width: 100%;
-            height: 200px;
-        }
-        .partners, .recent-matches {
-            display: flex;
-            gap: 20px;
-        }
-        .partners img, .recent-matches img {
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
             <img style="width: 100px;" src="https://vectorflags.s3.amazonaws.com/flags/eg-square-01.png" alt="User">
             <div class="menu">
-                <a href="#">Dashboard</a>
-                <a href="#">Player</a>
-                <a href="#">Team</a>
+                <a href="#main-content">Dashboard</a>
+                <a href="#players">Players</a>
             </div>
         </div>
-        <div class="content">
+        <div id="main-content" class="main-content">
             <div class="card">
                 <div class="header">
                     <div class="player-info">
@@ -142,45 +51,465 @@
                 <h2>Performance Rating</h2>
                 <canvas id="performanceChart" class="chart"></canvas>
             </div>
-        </div>
-        <div class="team-roster">
-            <div class="card">
+            <div id="players" class="card">
                 <h2>Team Players</h2>
-                <ul>
-                    <li>Mohamed Salah</li>
-                    <li>Ahmed Hegazi</li>
-                    <li>Mohamed Elneny</li>
-                    <li>Trezeguet</li>
-                    <li>Omar Gaber</li>
-                    <li>Mahmoud Hassan</li>
-                    <li>Ali Gabr</li>
-                    <li>Ahmed Fathy</li>
-                    <li>Mohamed Aboutrika</li>
-                    <li>Essam El-Hadary</li>
-                    <li>Amr Warda</li>
-                </ul>                
+                <div class="team-roster">
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/12022.png" alt="Placeholder Image">
+                        <h3>10</h3>
+                        <h3>M.Salah</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                        
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/49266.png" alt="Placeholder Image">
+                        <h3>7</h3>
+                        <h3>M.Trezeguet</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/86349.png" alt="Placeholder Image">
+                        <h3>1</h3>
+                        <h3>M.Elshenawi</h3>
+        
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/229029.png" alt="Placeholder Image">
+                        <h3>24</h3>
+                        <h3>M.Abdelmoneim</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/12207.png" alt="Placeholder Image">
+                        <h3>6</h3>
+                        <h3>A.Hegazi</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/169256.png" alt="Placeholder Image">
+                        <h3>13</h3>
+                        <h3>A.Fetouh</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/54265.png" alt="Placeholder Image">
+                        <h3>3</h3>
+                        <h3>M.Hany</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/374605.png" alt="Placeholder Image">
+                        <h3>14</h3>
+                        <h3>M.Attia</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/268018.png" alt="Placeholder Image">
+                        <h3>8</h3>
+                        <h3>E.Ashour</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/23174.png" alt="Placeholder Image">
+                        <h3>25</h3>
+                        <h3>A.Zizo</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/140182.png" alt="Placeholder Image">
+                        <h3>9</h3>
+                        <h3>M.Mohamed</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/12022.png" alt="Placeholder Image">
+                        <h3>10</h3>
+                        <h3>M.Salah</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                        
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/49266.png" alt="Placeholder Image">
+                        <h3>7</h3>
+                        <h3>M.Trezeguet</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/86349.png" alt="Placeholder Image">
+                        <h3>1</h3>
+                        <h3>M.Elshenawi</h3>
+        
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/229029.png" alt="Placeholder Image">
+                        <h3>24</h3>
+                        <h3>M.Abdelmoneim</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/12207.png" alt="Placeholder Image">
+                        <h3>6</h3>
+                        <h3>A.Hegazi</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/169256.png" alt="Placeholder Image">
+                        <h3>13</h3>
+                        <h3>A.Fetouh</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/54265.png" alt="Placeholder Image">
+                        <h3>3</h3>
+                        <h3>M.Hany</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/374605.png" alt="Placeholder Image">
+                        <h3>14</h3>
+                        <h3>M.Attia</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/268018.png" alt="Placeholder Image">
+                        <h3>8</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/23174.png" alt="Placeholder Image">
+                        <h3>25</h3>
+                        <h3>A.Zizo</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                    <div class="box">
+                        <img src="https://www.sportsbase.io/images/people/140182.png" alt="Placeholder Image">
+                        <h3>9</h3>
+                        <h3>M.Mohamed</h3>
+                        <div class="rating" data-player-id="player1">
+                            <input type="radio" name="rating-player1" id="rating-1-player1" value="1" />
+                            <label for="rating-1-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-2-player1" value="2" />
+                            <label for="rating-2-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-3-player1" value="3" />
+                            <label for="rating-3-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-4-player1" value="4" />
+                            <label for="rating-4-player1">★</label>
+                            <input type="radio" name="rating-player1" id="rating-5-player1" value="5" />
+                            <label for="rating-5-player1">★</label>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Function to handle rating changes for all players
+        function handleRatingChange() {
+            const ratings = document.querySelectorAll('.rating');
+
+            ratings.forEach(ratingContainer => {
+                const ratingInputs = ratingContainer.querySelectorAll('input');
+                const ratingLabels = ratingContainer.querySelectorAll('label');
+
+                // Reset all labels to unselected state
+                ratingLabels.forEach(label => label.style.color = '#ccc');
+
+                // Add event listeners to each input
+                ratingInputs.forEach(input => {
+                    input.addEventListener('change', function() {
+                        const value = this.value;
+
+                        // Highlight the selected stars
+                        ratingLabels.forEach((label, index) => {
+                            if (index < value) {
+                                label.style.color = '#f90';
+                            }
+                        });
+
+                        // Optional: Update the selected rating display if needed
+                        // For example, you might want to set a data attribute or update a specific element
+                    });
+                });
+            });
+        }
+
+        // Initialize rating functionality
+        handleRatingChange();
+
+    </script>
     <script>
         const ctx = document.getElementById('performanceChart').getContext('2d');
         const performanceChart = new Chart(ctx, {
-            type: 'line',
+            type: 'line', // or other types
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
                 datasets: [{
-                    label: 'Team Performance',
-                    data: [75, 85, 78, 92, 88, 95, 100, 90, 85, 92, 88, 95], // Example performance data
-                    borderColor: 'rgba(54, 162, 235, 1)',
+                    label: 'Goals',
+                    data: [30, 19, 10, 9, 20, 15, 32],
+                    borderColor: '#ffa300ff', // Line color
                     borderWidth: 2,
-                    fill: false
+                    pointBackgroundColor: '#ffa300ff', // Point color
+                    pointBorderColor: '#ffa300ff', // Point border color
                 }]
             },
             options: {
                 scales: {
+                    x: {
+                        ticks: {
+                            color: '#ffa300ff' // X-axis text color
+                        }
+                    },
                     y: {
-                        beginAtZero: true
+                        ticks: {
+                            color: '#ffa300ff' // Y-axis text color
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#ffa300ff' // Legend text color
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            labelTextColor: function() {
+                                return '#ffa300ff'; // Tooltip text color
+                            }
+                        }
                     }
                 }
             }
